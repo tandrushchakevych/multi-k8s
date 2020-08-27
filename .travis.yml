@@ -14,7 +14,7 @@ after_success:
   - docker build -t tandrtc/multi-server ./server
   - docker build -t tandrtc/multi-worker ./worker
   # log into Docker CLI
-  - echo "$DOCKERPASS" | docker login -u "$DOCKERID" --password--stdin
+  - echo "$DOCKERPASS" | docker login -u "$DOCKERID" --password-stdin
   # Push built images
   - docker push tandrtc/multi-client
   - docker push tandrtc/multi-nginx
