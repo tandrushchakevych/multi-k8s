@@ -3,6 +3,7 @@ services:
   postgres:
     image: 'postgres:latest'
     environment:
+      - POSTGRES_DB=fibvalues
       - POSTGRES_PASSWORD=postgres_password
   redis:
     image: 'redis:latest'
@@ -12,7 +13,7 @@ services:
       dockerfile: Dockerfile.dev
       context: ./nginx
     ports:
-    - '3050:80'
+      - '3050:80'
     depends_on:
       - api
       - client
@@ -21,16 +22,16 @@ services:
       dockerfile: Dockerfile.dev
       context: ./server
     volumes:
-    - /app/node_modules
-    - ./server:/app
+      - /app/node_modules
+      - ./server:/app
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-      - PGUSER=postgres
       - PGHOST=postgres
-      - PGDATABASE=postgres
-      - PGPASSWORD=postgres_password
       - PGPORT=5432
+      - PGUSER=postgres
+      - PGPASSWORD=postgres_password
+      - PGDATABASE=fibvalues
     depends_on:
       - postgres
   client:
@@ -39,8 +40,8 @@ services:
       dockerfile: Dockerfile.dev
       context: ./client
     volumes:
-    - /app/node_modules
-    - ./client:/app
+      - /app/node_modules
+      - ./client:/app
   worker:
     build:
       dockerfile: Dockerfile.dev
