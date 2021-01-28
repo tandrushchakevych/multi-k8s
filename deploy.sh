@@ -1,6 +1,6 @@
 docker build -t tandrtc/multi-client:latest -t tandrtc/multi-client:$SHA -f ./client/Dockerfile ./client
-docker build -t tandrtc/multi-server:latest -t tandrtc/multi-server:$SHA -f ./client/Dockerfile ./server
-docker build -t tandrtc/multi-worker:latest -t tandrtc/multi-worker:$SHA -f ./client/Dockerfile ./worker
+docker build -t tandrtc/multi-server:latest -t tandrtc/multi-server:$SHA -f ./server/Dockerfile ./server
+docker build -t tandrtc/multi-worker:latest -t tandrtc/multi-worker:$SHA -f ./worker/Dockerfile ./worker
 
 docker push tandrtc/multi-client:latest
 docker push tandrtc/multi-server:latest
