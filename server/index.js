@@ -19,10 +19,10 @@ const pgClient = new Pool({
     port: keys.pgPort,
 });
 
-pgClient.on('connect', client => {
+pgClient.on('connect', () => {
     console.log("Creating 'values' table on connect");
-    client
-        .query('CREATE TABLE IF NOT EXISTS "values" (number INT)')
+    pgClient
+        .query('CREATE TABLE IF NOT EXISTS values (number INT)')
         .catch((err) => console.log("Error creating 'values' table on connect: " + err));
 });
 
